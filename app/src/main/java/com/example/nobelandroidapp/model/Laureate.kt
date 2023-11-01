@@ -1,4 +1,4 @@
-package com.example.nobelandroidapp
+package com.example.nobelandroidapp.model
 
 data class Laureate(
     val name: String,
