@@ -4,8 +4,9 @@ import android.util.Log
 import com.example.nobelandroidapp.domain.model.Laureate
 import com.example.nobelandroidapp.domain.repository.NobelRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class GetLaureatesListUseCase(
+class GetLaureatesListUseCase @Inject constructor(
     private val nobelRepository: NobelRepository
 ) {
 

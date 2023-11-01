@@ -7,12 +7,17 @@ import com.example.nobelandroidapp.data.remote.NobelApi
 import com.example.nobelandroidapp.data.repository.NobelRepositoryImpl
 import com.example.nobelandroidapp.domain.model.Laureate
 import com.example.nobelandroidapp.domain.use_case.GetLaureatesListUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class ListViewModel : ViewModel() {
+@HiltViewModel
+class ListViewModel @Inject constructor(
+    private val getLaureatesListUseCase: GetLaureatesListUseCase
+) : ViewModel() {
 
     val state = mutableStateOf(emptyList<Laureate>())
 
@@ -22,15 +27,7 @@ class ListViewModel : ViewModel() {
 
     private fun getLaureatesByCategory() {
         viewModelScope.launch {
-            val api: NobelApi = Retrofit.Builder()
-                .baseUrl("https://api.nobelprize.org")
-                .addConverterFactory(
-                    GsonConverterFactory.create())
-                .build()
-                .create(NobelApi::class.java)
-            val repo = NobelRepositoryImpl(api)
-            val useCase = GetLaureatesListUseCase(repo)
-            useCase(0,20, "che")
+            getLaureatesListUseCase(0,20, "eco")
                 .collectLatest {laureates ->
                     state.value = laureates
                 }

@@ -6,8 +6,9 @@ import com.example.nobelandroidapp.domain.model.Laureate
 import com.example.nobelandroidapp.domain.repository.NobelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class NobelRepositoryImpl(
+class NobelRepositoryImpl @Inject constructor(
     private val api: NobelApi
 ) : NobelRepository {
 
