@@ -1,6 +1,7 @@
 package com.example.nobelandroidapp.domain.use_case
 
 import android.util.Log
+import com.example.nobelandroidapp.common.NetworkResult
 import com.example.nobelandroidapp.domain.model.Laureate
 import com.example.nobelandroidapp.domain.repository.NobelRepository
 import kotlinx.coroutines.flow.Flow
@@ -14,7 +15,7 @@ class GetLaureatesListUseCase @Inject constructor(
         apiOffset: Int,
         apiLimit: Int,
         category: String
-    ) : Flow<List<Laureate>> {
+    ) : Flow<NetworkResult<List<Laureate>>> {
         Log.d("Laureates use case", "Use case flow")
         return nobelRepository.getLaureatesByCategory(apiOffset, apiLimit, category)
     }

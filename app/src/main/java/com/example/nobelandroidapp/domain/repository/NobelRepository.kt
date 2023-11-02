@@ -1,5 +1,6 @@
 package com.example.nobelandroidapp.domain.repository
 
+import com.example.nobelandroidapp.common.NetworkResult
 import com.example.nobelandroidapp.domain.model.Laureate
 import kotlinx.coroutines.flow.Flow
 
@@ -9,5 +10,5 @@ interface NobelRepository {
        apiOffset: Int,
        apiLimit: Int,
        categoryAbbreviation: String
-   ) : Flow<List<Laureate>>
+   ) : Flow<NetworkResult<List<Laureate>>>
 }
