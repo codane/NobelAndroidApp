@@ -1,4 +1,4 @@
-package com.example.nobelandroidapp.presentation
+package com.example.nobelandroidapp.presentation.list_screen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

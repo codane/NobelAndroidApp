@@ -1,4 +1,4 @@
-package com.example.nobelandroidapp.presentation
+package com.example.nobelandroidapp.presentation.list_screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,28 +13,30 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun ListScreen(
-    viewModel: ListViewModel = hiltViewModel()
+    viewModel: ListViewModel = hiltViewModel(),
 ) {
     val uiState = viewModel.uiState.value
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        when(uiState) {
+        when (uiState) {
             is ListUiState.LoadingState -> {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
+
             is ListUiState.LoadSuccessState -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     content = {
-                        items(uiState.laureates) {laureate ->
+                        items(uiState.laureates) { laureate ->
                             LaureateItem(laureate = laureate)
                         }
                     }
                 )
             }
+
             is ListUiState.ErrorState -> {
                 Text(
                     text = uiState.errorMessage,

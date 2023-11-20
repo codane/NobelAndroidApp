@@ -1,6 +1,8 @@
 package com.example.nobelandroidapp.di
 
+import androidx.lifecycle.SavedStateHandle
 import com.example.nobelandroidapp.common.Constants
+import com.example.nobelandroidapp.data.local.NobelPrizeCategories
 import com.example.nobelandroidapp.data.remote.NobelApi
 import dagger.Module
 import dagger.Provides
@@ -22,5 +24,11 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NobelApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePrizeCategories() : NobelPrizeCategories {
+        return NobelPrizeCategories()
     }
 }

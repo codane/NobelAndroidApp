@@ -1,4 +1,4 @@
-package com.example.nobelandroidapp.presentation
+package com.example.nobelandroidapp.presentation.list_screen
 
 import com.example.nobelandroidapp.domain.model.Laureate
 

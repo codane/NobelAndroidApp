@@ -15,7 +15,7 @@ class GetLaureatesListUseCase @Inject constructor(
         apiOffset: Int,
         apiLimit: Int,
         category: String
-    ) : Flow<NetworkResult<List<Laureate>>> {
+    ): Flow<NetworkResult<List<Laureate>>> {
         Log.d("Laureates use case", "Use case flow")
         return nobelRepository.getLaureatesByCategory(apiOffset, apiLimit, category)
     }

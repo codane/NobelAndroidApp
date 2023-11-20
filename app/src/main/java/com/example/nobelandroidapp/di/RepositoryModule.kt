@@ -1,6 +1,8 @@
 package com.example.nobelandroidapp.di
 
+import com.example.nobelandroidapp.data.repository.LocalRepositoryImpl
 import com.example.nobelandroidapp.data.repository.NobelRepositoryImpl
+import com.example.nobelandroidapp.domain.repository.LocalRepository
 import com.example.nobelandroidapp.domain.repository.NobelRepository
 import dagger.Binds
 import dagger.Module
@@ -13,4 +15,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideNobelRepository(nobelRepositoryImpl: NobelRepositoryImpl) : NobelRepository
+
+    @Binds
+    abstract fun provideLocalRepository(localRepositoryImpl: LocalRepositoryImpl) : LocalRepository
 }

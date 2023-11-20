@@ -3,8 +3,13 @@ package com.example.nobelandroidapp.presentation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.nobelandroidapp.presentation.home_screen.HomeScreen
+import com.example.nobelandroidapp.presentation.list_screen.ListScreen
 import com.example.nobelandroidapp.ui.theme.NobelAndroidAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,16 +19,25 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NobelAndroidAppTheme {
-                ListScreen()
+                val navController = rememberNavController()
+                NavHost(
+                    navController = navController,
+                    startDestination = "home_screen"
+                ) {
+                    composable(route = "home_screen") {
+                        HomeScreen(navController = navController)
+                    }
+                    composable(
+                        route = "list_screen/{category}",
+                        arguments = listOf(
+                            navArgument("category") {
+                                type = NavType.StringType
+                            })
+                        ) {
+                        ListScreen()
+                    }
+                }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NobelAndroidAppTheme {
-        ListScreen()
     }
 }
