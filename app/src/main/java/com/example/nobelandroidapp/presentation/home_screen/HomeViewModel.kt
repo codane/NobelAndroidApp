@@ -11,8 +11,8 @@ class HomeViewModel @Inject constructor(
     private val getCategoriesUseCase: GetCategoriesUseCase
 ) : ViewModel() {
 
-    private val _categoriesInfo = mutableListOf<CategoryInfo>()
-    val categoriesInfo = _categoriesInfo
+    private val _categories = mutableListOf<CategoryInfo>()
+    val categories = _categories
 
     init {
         getCategoriesInfo()
@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getCategoriesInfo() {
         getCategoriesUseCase().let { categories ->
-            _categoriesInfo.addAll(categories)
+            _categories.addAll(categories)
         }
     }
 }

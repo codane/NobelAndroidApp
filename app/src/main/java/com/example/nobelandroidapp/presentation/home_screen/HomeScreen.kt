@@ -19,7 +19,6 @@ import com.example.nobelandroidapp.presentation.home_screen.components.Categorie
 fun HomeScreen(
     homeViewModel: HomeViewModel = hiltViewModel(),
     navController: NavController
-    //onNavigateToListScreen: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -33,7 +32,7 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(30.dp))
         CategoriesGrid(
-            categories = homeViewModel.categoriesInfo,
+            categories = homeViewModel.categories,
             navController = navController,
         )
     }
