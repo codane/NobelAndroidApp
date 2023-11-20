@@ -7,6 +7,6 @@ import com.example.nobelandroidapp.domain.model.Birth
 fun BirthDto.toBirth(): Birth {
     return Birth(
         date = date,
-        place = place.toPlace()
+        place = place?.toPlace()
     )
 }

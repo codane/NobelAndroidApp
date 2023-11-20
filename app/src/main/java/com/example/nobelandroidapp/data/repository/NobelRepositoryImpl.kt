@@ -26,8 +26,9 @@ class NobelRepositoryImpl @Inject constructor(
                 apiOffset,
                 apiLimit,
                 categoryAbbreviation
-            ).toNobelResponse().laureates
-            emit(NetworkResult.Success(response))
+            ).toNobelResponse()
+            val laureates = response.laureates
+            emit(NetworkResult.Success(laureates))
         } catch (e: HttpException) {
             e.printStackTrace()
             emit(NetworkResult.Error(e.message()))

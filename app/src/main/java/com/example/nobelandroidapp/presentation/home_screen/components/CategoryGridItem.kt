@@ -26,14 +26,14 @@ fun CategoryGridItem(
     navController: NavController
 ) {
 
-    val cat = LocalContext.current.getString(category.categoryAbbreviation)
+    val abbreviation = LocalContext.current.getString(category.categoryAbbreviation)
     BoxWithConstraints(
         modifier = modifier
             .padding(8.dp)
             .aspectRatio(1f)
             .clip(RoundedCornerShape(20.dp))
             .background(NobelGrey)
-            .clickable { navController.navigate("list_screen/$cat") }
+            .clickable { navController.navigate("list_screen/$abbreviation") }
     ) {
         Column {
             Text(
