@@ -5,14 +5,13 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import com.example.nobelandroidapp.domain.local.model.CategoryInfo
 
 @Composable
 fun CategoriesGrid(
     categories: List<CategoryInfo>,
     modifier: Modifier = Modifier,
-    navController: NavController
+    onNavigateToListScreen : (String) -> Unit
 ) {
     LazyVerticalGrid(
         modifier = modifier,
@@ -21,8 +20,8 @@ fun CategoriesGrid(
             items(categories) { category ->
                 CategoryGridItem(
                     category = category,
-                    navController = navController,
-                )
+                    onNavigateToListScreen = { onNavigateToListScreen(it) }
+                    )
             }
         })
 }

@@ -15,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.nobelandroidapp.domain.local.model.CategoryInfo
 import com.example.nobelandroidapp.ui.theme.NobelGrey
 
@@ -23,7 +22,7 @@ import com.example.nobelandroidapp.ui.theme.NobelGrey
 fun CategoryGridItem(
     category: CategoryInfo,
     modifier: Modifier = Modifier,
-    navController: NavController
+    onNavigateToListScreen : (String) -> Unit
 ) {
 
     val abbreviation = LocalContext.current.getString(category.categoryAbbreviation)
@@ -33,7 +32,7 @@ fun CategoryGridItem(
             .aspectRatio(1f)
             .clip(RoundedCornerShape(20.dp))
             .background(NobelGrey)
-            .clickable { navController.navigate("list_screen/$abbreviation") }
+            .clickable { onNavigateToListScreen(abbreviation) }
     ) {
         Column {
             Text(
