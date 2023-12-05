@@ -84,6 +84,11 @@ dependencies {
 
     // Hilt with navigation
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime:3.2.1")
+    // Paging with Compose
+    implementation("androidx.paging:paging-compose:3.3.0-alpha02")
 }
 kapt {
     correctErrorTypes = true
